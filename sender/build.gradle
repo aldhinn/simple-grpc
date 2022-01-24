@@ -1,0 +1,65 @@
+plugins {
+    id "java"
+    id "application"
+    id "eclipse"
+    id "idea"
+    id "org.openjfx.javafxplugin" version "0.0.10"
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    jUnitVersion = "5.8.2"
+}
+
+sourceCompatibility = "17"
+targetCompatibility = "17"
+
+group "org.simple.sender"
+version "0.0.0"
+
+javafx {
+    version = "17.0.1"
+    modules = [
+            "javafx.controls",
+            "javafx.fxml",
+            "javafx.graphics"
+    ]
+}
+
+application {
+    mainClass = "org.simple.sender.App"
+}
+
+dependencies {
+    //#region JavaFX Plugin dependencies.
+    implementation("org.controlsfx:controlsfx:11.1.0")
+    implementation("com.dlsc.formsfx:formsfx-core:11.3.2") {
+        exclude(group: "org.openjfx")
+    }
+    implementation("net.synedra:validatorfx:0.1.13") {
+        exclude(group: "org.openjfx")
+    }
+    implementation("org.kordamp.ikonli:ikonli-javafx:12.2.0")
+    implementation("org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0")
+    implementation("eu.hansolo:tilesfx:11.48") {
+        exclude(group: "org.openjfx")
+    }
+    //#endregion JavaFX dependencies.
+    //#region Java testing libraries.
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${jUnitVersion}"
+    //#endregion Java testing libraries.
+}
+
+sourceSets {
+    main.java.srcDir "src"
+    main.resources.srcDir "res"
+    test.java.srcDir "tests"
+}
+
+test {
+    useJUnitPlatform()
+}
