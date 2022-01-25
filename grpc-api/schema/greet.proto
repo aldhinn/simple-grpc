@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package org.simple.api;
+option java_multiple_files = true;
+option java_package = "org.simple.api";
+
+message Greeting {
+    string text = 1;
+}
+
+enum GreetResponseState {
+    SUCCESS = 0;
+}
+
+message GreetResponse {
+    GreetResponseState state = 1;
+}
+
+service GreetService {
+    rpc sendGreeting(Greeting) returns (GreetResponse) {}
+}
