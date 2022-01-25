@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package org.simple.api;
+package org.simple.api.schema;
 option java_multiple_files = true;
-option java_package = "org.simple.api";
+option java_package = "org.simple.api.schema";
 
 message Greeting {
     string text = 1;
