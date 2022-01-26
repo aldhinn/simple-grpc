@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.21)
 
 project(org.simple.api VERSION 0.0.0)
 
+set(protobuf_BUILD_TESTS OFF)
 # Import protobuf library
 add_subdirectory(
     "${CMAKE_CURRENT_SOURCE_DIR}/../../protobuf/cmake"
