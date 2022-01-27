@@ -47,11 +47,11 @@ dependencies {
     implementation("eu.hansolo:tilesfx:11.48") {
         exclude(group: "org.openjfx")
     }
-    //#endregion JavaFX dependencies.
+    //#endregion
     //#region Java testing libraries.
     testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
     testImplementation "org.junit.jupiter:junit-jupiter-engine:${jUnitVersion}"
-    //#endregion Java testing libraries.
+    //#endregion
 }
 
 sourceSets {
