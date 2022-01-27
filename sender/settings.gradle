@@ -1,1 +1,4 @@
+include ":simple-grpc-api-impl"
+project(":simple-grpc-api-impl").projectDir = file("./../grpc-api/java-impl/")
+
 rootProject.name = 'simple-sender'

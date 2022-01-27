@@ -48,6 +48,10 @@ dependencies {
         exclude(group: "org.openjfx")
     }
     //#endregion
+    //#region simple-grpc-api-impl
+    // The java interface to the grpc api.
+    implementation project(":simple-grpc-api-impl")
+    //#endregion
     //#region Java testing libraries.
     testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
     testImplementation "org.junit.jupiter:junit-jupiter-engine:${jUnitVersion}"
