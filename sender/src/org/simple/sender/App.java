@@ -14,7 +14,7 @@ public class App extends Application {
         primaryStage.setScene(new Scene(FXMLLoader.load(
                 Objects.requireNonNull(getClass().getResource(
                         "views/MainView.fxml")))));
-        primaryStage.setTitle("Janine Cute");
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
     //#endregion
