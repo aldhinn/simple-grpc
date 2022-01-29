@@ -2,16 +2,16 @@ plugins {
     id "java"
     id "eclipse"
     id "idea"
+    id "com.google.protobuf" version "0.8.18"
 }
 
 repositories {
     mavenCentral()
 }
 
-ext {
-    jUnitVersion = "5.8.2"
-    protobufJavaVersion = "3.14.0"
-}
+def jUnitVersion = "5.8.2"
+def protobufVersion = "3.19.3"
+def grpcVersion = "1.44.0"
 
 sourceCompatibility = "17"
 targetCompatibility = "17"
@@ -20,16 +20,38 @@ version "0.0.0"
 
 dependencies {
     //#region grpc dependencies
-    implementation "com.google.protobuf:protobuf-java:${protobufJavaVersion}"
+    implementation "com.google.protobuf:protobuf-java:${protobufVersion}"
+    implementation "io.grpc:grpc-stub:${grpcVersion}"
+    implementation "io.grpc:grpc-protobuf:${grpcVersion}"
     //#endregion
-    //#region Java testing libraries.
+    //#region annotations
+    compileOnly "org.apache.tomcat:annotations-api:6.0.53"
+    //#endregion
+    //#region Java testing libraries
     testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
     testImplementation "org.junit.jupiter:junit-jupiter-engine:${jUnitVersion}"
     //#endregion
 }
 
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:${protobufVersion}"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
+
 sourceSets {
     main.java.srcDir "src"
+    main.proto.srcDir "./../schema/"
     test.java.srcDir "tests"
 }
 
