@@ -2,3 +2,7 @@
 	path = protobuf
 	url = https://github.com/protocolbuffers/protobuf.git
 	branch = 3.19.x
+[submodule "grpc"]
+	path = grpc
+	url = https://github.com/grpc/grpc.git
+	branch = v1.43.x
