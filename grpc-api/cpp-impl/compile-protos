@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+# This script compiles .proto files from the
+# folder ./../schema/
+
+# Make sure the output folder exists.
+if [ ! -d "./src/api/schema/" ]; then
+mkdir -p ./src/api/schema/
+fi
+
+# Generate messages implementation.
+./../bin/protoc \
+--proto_path=./../schema/ \
+--cpp_out=./src/api/schema/ \
+./../schema/*.proto
+# Generate grpc service implementation.
+./../bin/protoc \
+--plugin=protoc-gen-grpc=./../bin/grpc_cpp_plugin \
+--proto_path=./../schema/ \
+--grpc_out=./src/api/schema/ \
+./../schema/*.proto
