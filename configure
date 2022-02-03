@@ -1,4 +1,51 @@
 #!/usr/bin/bash
 
+# Linux/Unix Project Configuration Script
+
+# Always call this configuration script from the
+# root of the protject directory.
+
 # Update submodules
 git submodule update --init --recursive
+
+# <------- Building Protoc and GRPC C++ Plugin ------------>
+
+# Create build directory for grpc plugin if it doesn't exist yet.
+if [ ! -d "grpc-api/build/" ]; then
+mkdir -p grpc-api/build/
+fi
+
+# Build plugin using cmake.
+cd grpc-api/build/
+cmake \
+-DCMAKE_BUILD_TYPE=Release \
+-DgRPC_PROTOBUF_PROVIDER=module \
+-Dprotobuf_BUILD_TESTS=OFF \
+-DPROTOBUF_ROOT_DIR=${PWD}/../../protobuf \
+-DgRPC_BUILD_CSHARP_EXT=OFF \
+-DgRPC_BUILD_GRPC_CSHARP_PLUGIN=OFF \
+-DgRPC_BUILD_GRPC_NODE_PLUGIN=OFF \
+-DgRPC_BUILD_GRPC_OBJECTIVE_C_PLUGIN=OFF \
+-DgRPC_BUILD_GRPC_PHP_PLUGIN=OFF \
+-DgRPC_BUILD_GRPC_PYTHON_PLUGIN=OFF \
+-DgRPC_BUILD_GRPC_RUBY_PLUGIN=OFF \
+./../../grpc/
+cmake --build ./
+
+# Return to the root of the project.
+cd ./../../
+
+# <---------------------- END --------------------->
+
+# <------- Copy binaries to grpc-api/bin/ --------->
+
+# Ensure grpc-api/bin/ directory exists.
+if [ ! -d "grpc-api/bin/" ]; then
+mkdir -p grpc-api/bin/
+fi
+
+# Copy binaries needed.
+cp grpc-api/build/third_party/protobuf/protoc grpc-api/bin/
+cp grpc-api/build/grpc_cpp_plugin grpc-api/bin/
+
+# <---------------------- END -------------------->
