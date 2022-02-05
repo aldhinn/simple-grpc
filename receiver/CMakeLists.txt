@@ -20,3 +20,7 @@ target_link_libraries(
     org.simple.receiver
     org.simple.api
 )
+target_include_directories(
+    org.simple.receiver PUBLIC
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/"
+)
