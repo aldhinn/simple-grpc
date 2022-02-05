@@ -50,3 +50,7 @@ target_link_libraries(
     libprotobuf-lite
     grpc
 )
+target_include_directories(
+    org.simple.api PUBLIC
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/"
+)
