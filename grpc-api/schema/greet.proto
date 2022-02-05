@@ -10,6 +10,7 @@ message Greeting {
 
 enum GreetResponseState {
     SUCCESS = 0;
+    FAIL = 1;
 }
 
 message GreetResponse {
