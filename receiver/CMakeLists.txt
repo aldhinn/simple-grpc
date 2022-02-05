@@ -19,6 +19,7 @@ add_executable(
 target_link_libraries(
     org.simple.receiver
     org.simple.api
+    grpc++
 )
 target_include_directories(
     org.simple.receiver PUBLIC
