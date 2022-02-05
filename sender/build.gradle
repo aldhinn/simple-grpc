@@ -10,9 +10,7 @@ repositories {
     mavenCentral()
 }
 
-ext {
-    jUnitVersion = "5.8.2"
-}
+def jUnitVersion = "5.8.2"
 
 sourceCompatibility = "17"
 targetCompatibility = "17"
