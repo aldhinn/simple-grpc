@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+# Go to the receiver directory
+cd receiver/
+
+# Create the build directory if it doesn't exist yet.
+if [ ! -d "build/" ]; then
+mkdir -p build/
+fi
+
+# Go to the build directory.
+cd build
+
+# Check if the receiver is already built.
+if [ -f "org.simple.receiver" ]; then
+# Create the project files using cmake.
+cmake ./../
+# Build the binaries.
+cmake --build ./
+fi
+
+# Execute.
+./org.simple.receiver

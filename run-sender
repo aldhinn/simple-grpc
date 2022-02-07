@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+# Go to the sender directory.
+cd sender/
+
+# Run the application.
+./gradlew run
