@@ -11,6 +11,8 @@ repositories {
 }
 
 def jUnitVersion = "5.8.2"
+def grpcVersion = "1.43.2"
+def protobufVersion = "3.19.4"
 
 sourceCompatibility = "17"
 targetCompatibility = "17"
@@ -49,6 +51,14 @@ dependencies {
     //#region simple-grpc-api-impl
     // The java interface to the grpc api.
     implementation project(":simple-grpc-api-impl")
+    //#endregion
+    //#region grpc
+    implementation "io.grpc:grpc-api:${grpcVersion}"
+    implementation "io.grpc:grpc-stub:${grpcVersion}"
+    implementation "io.grpc:grpc-netty:${grpcVersion}"
+    //#endregion
+    //#region protobuf
+    implementation "com.google.protobuf:protobuf-java:${protobufVersion}"
     //#endregion
     //#region Java testing libraries.
     testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
