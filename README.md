@@ -20,5 +20,7 @@ configure.bat
 ``` bash
 ./configure
 ```
+## 🏃 Run
+Simply run the receiver and sender run scripts.
 ## 📜 LICENCE
 **simple-grpc** is under the [MIT Licence](./LICENCE).
