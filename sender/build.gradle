@@ -10,7 +10,6 @@ repositories {
     mavenCentral()
 }
 
-def jUnitVersion = "5.8.2"
 def grpcVersion = "1.43.2"
 def protobufVersion = "3.19.4"
 
@@ -60,18 +59,9 @@ dependencies {
     //#region protobuf
     implementation "com.google.protobuf:protobuf-java:${protobufVersion}"
     //#endregion
-    //#region Java testing libraries.
-    testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
-    testImplementation "org.junit.jupiter:junit-jupiter-engine:${jUnitVersion}"
-    //#endregion
 }
 
 sourceSets {
     main.java.srcDir "src"
     main.resources.srcDir "res"
-    test.java.srcDir "tests"
-}
-
-test {
-    useJUnitPlatform()
 }
